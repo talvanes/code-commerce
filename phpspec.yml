@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: PortalComercial
+        psr4_prefix: PortalComercial
         src_path: app

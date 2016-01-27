@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Custom route (Controller)
+Route::get('exemplo', function () {
+    $nome = 'Talvanes';
+    $sobrenome = 'de Sousa';
+    
+    //return view('exemplo')->with('nome', $nome);
+    /*return view('exemplo', [
+        'nome' => $nome,
+        'sobrenome' => $sobrenome
+    ]);*/
+    return view('exemplo', compact('nome', 'sobrenome'));
+});

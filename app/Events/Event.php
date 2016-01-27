@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace PortalComercial\Events;
 
 abstract class Event
 {
