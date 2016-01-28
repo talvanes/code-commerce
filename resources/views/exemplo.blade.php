@@ -1,2 +1,7 @@
-<h1>Olá, <small>{{ $nome }}</small>!</h1>
-<p class="tagline">Seja bem-vindo!<br><b>Nome completo:</b> {{ $nome }} {{ $sobrenome }}</p>
+<h1>Olá!</h1>
+
+<ul>
+    @foreach($categories as $category)
+    <li>{{ $category->name }}</li>
+    @endforeach
+</ul>

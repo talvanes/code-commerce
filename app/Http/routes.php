@@ -16,14 +16,10 @@ Route::get('/', function () {
 });
 
 // Custom route (Controller)
-Route::get('exemplo', function () {
-    $nome = 'Talvanes';
-    $sobrenome = 'de Sousa';
-    
-    //return view('exemplo')->with('nome', $nome);
-    /*return view('exemplo', [
-        'nome' => $nome,
-        'sobrenome' => $sobrenome
-    ]);*/
-    return view('exemplo', compact('nome', 'sobrenome'));
-});
+Route::get('exemplo', "Exemplo@exemplo");
+
+// AdminCategoriesController
+Route::get('admin/categories', "AdminCategoriesController@index");
+
+// AdminProductsController
+Route::get('admin/products', "AdminProductsController@index");
