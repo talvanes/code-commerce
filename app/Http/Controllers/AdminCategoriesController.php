@@ -57,9 +57,13 @@ class AdminCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\PortalComercial\Category $category)
     {
-        //
+        if (isset($category)):
+            return "<p><b>{$category->name}:</b> {$category->description}</p>";
+        endif;
+        
+        return "There's no category id like this!";
     }
 
     /**

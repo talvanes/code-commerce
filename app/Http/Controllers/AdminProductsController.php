@@ -57,9 +57,14 @@ class AdminProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\PortalComercial\Product $product)
     {
-        //
+        if (!empty($product)):
+            $price = 'R$ ' . number_format($product->price,2,',','.');
+            return "<p><b>{$product->name}:</b> {$product->description} ({$price})</p>";
+        endif;
+        
+        return "There's no product like this!";
     }
 
     /**
