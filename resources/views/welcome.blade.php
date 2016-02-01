@@ -31,14 +31,14 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 2.5em;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">@yield('title')</div>
             </div>
         </div>
     </body>

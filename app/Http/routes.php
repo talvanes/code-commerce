@@ -1,8 +1,3 @@
-<form action="#" method="POST">
-    <input type="hidden" name="_method" value="PUT"/>
-    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-</form>
-
 <?php
 
 /*
@@ -22,6 +17,25 @@ Route::get('/', function () {
 
 // Custom route (Controller)
 Route::get('exemplo', "Exemplo@exemplo");
+// Another custom route (Closure)
+Route::get('/exemplo2', function(){
+    return "Oi";
+});
+
+// Categories //
+Route::get('categories', ['as' => 'categories', 'uses' => "CategoryController@index"]);
+Route::post('categories', ['as' => 'categories.store', 'uses' => "CategoryController@store"]);
+Route::get('categories/create', ['as' => 'categories.create', 'uses' => "CategoryController@create"]);
+Route::get('categories/{id}/destroy', ['as' => 'categories.destroy', 'uses' => "CategoryController@destroy"]);
+Route::get('categories/{id}/edit', ['as' => 'categories.edit', 'uses' => "CategoryController@edit"]);
+Route::put('categories/{id}/update', ['as' => 'categories.update', 'uses' => "CategoryController@update"]);
+// Products //
+Route::get('products', ['as' => 'products', 'uses' => "ProductController@index"]);
+Route::post('products', ['as' => 'products.store', 'uses' => "ProductController@store"]);
+Route::get('products/create', ['as' => 'products.create', 'uses' => "ProductController@create"]);
+Route::get('products/{id}/edit', ['as' => 'products.edit', 'uses' => "ProductController@edit"]);
+Route::put('products/{id}/update', ['as' => 'products.update', 'uses' => "ProductController@update"]);
+Route::get('products/{id}/destroy', ['as' => 'products.destroy', 'uses' => "ProductController@destroy"]);
 
 // Another custom routes examploe (using closures)
 /*
@@ -42,10 +56,6 @@ Route::any('/exemplo2', function () {
 });
 */
 
-Route::get('/exemplo2', function(){
-    return "Oi";
-});
-
 // AdminCategoriesController
 //Route::get('admin/categories', "AdminCategoriesController@index");
 
@@ -53,7 +63,7 @@ Route::get('/exemplo2', function(){
 //Route::get('admin/products', "AdminProductsController@index");
 
 // Gropued Routes
-Route::group(['prefix' => 'admin'], function () {
+/*Route::group(['prefix' => 'admin'], function () {
    
    // AdminCategoriesController
    Route::get('categories', "AdminCategoriesController@index");
@@ -62,11 +72,11 @@ Route::group(['prefix' => 'admin'], function () {
    // AdminProductsController
    Route::get('products', "AdminProductsController@index");
    Route::get('product/{product}', "AdminProductsController@show");
-});
+});*/
 
 
 // Parameters in URL
-Route::pattern('id', '[0-9]+');
+/*Route::pattern('id', '[0-9]+');
 
 Route::get('user/{id?}', function ($id = null){
     if (!empty($id)):
@@ -74,7 +84,7 @@ Route::get('user/{id?}', function ($id = null){
     endif;
     
     return "User ID inválido!";
-});
+});*/
 
 // Named routes
 /*
@@ -87,6 +97,6 @@ echo route('produtos');
 */
 
 // Passing Models into Routes
-Route::get('category/{category}', function(\PortalComercial\Category $category){
+/*Route::get('category/{category}', function(\PortalComercial\Category $category){
     return $category->name;
-});
+});*/
