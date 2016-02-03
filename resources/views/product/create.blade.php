@@ -4,7 +4,7 @@
 	<div class="container">
 		<h1>Create Product</h1>
 		
-		{!! Form::open(['route' => 'products.store']) !!}
+		{!! Form::open(['route' => 'products.store', 'method' => 'post']) !!}
 		
 		@if($errors->any())
 		<ul class="alert">
@@ -13,6 +13,11 @@
 			@endforeach
 		</ul>
 		@endif
+		
+		<div class="form-group">
+			{!! Form::label('category', 'Category:') !!}
+			{!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+		</div>
 		
 		<div class="form-group">
 			{!! Form::label('name', 'Name:') !!}
@@ -25,21 +30,16 @@
 		</div>
 		
 		<div class="form-group">
-			<div class="row">
-				<div class="col-md-4 col-sm-12">
-					{!! Form::label('price', 'Price:') !!}
-					{!! Form::input('number', 'price', null, ['class' => 'form-control']) !!}
-				</div>
-				<div class="col-md-4 col-sm-12">
-					{!! Form::label('featured', 'Featured:') !!}
-					{!! Form::checkbox('featured', 0, null, ['min' => 0, 'max' => 999999]) !!}
-				</div>
-				<div class="col-md-4 col-sm-12">
-					{!! Form::label('recommend', 'Recommended:') !!}
-					{!! Form::checkbox('recommend', 0, null, ['min' => 0, 'max' => 999999]) !!}
-				</div>
-			</div>
+			{!! Form::label('price', 'Price:') !!}
+			{!! Form::input('number', 'price', null, ['class' => 'form-control']) !!}
+		</div>
+		
+		<div class="form-group">
+			{!! Form::label('featured', 'Featured:', ['class' => 'checkbox-inline']) !!}
+			{!! Form::checkbox('featured', 0, null) !!}
 			
+			{!! Form::label('recommend', 'Recommended:', ['class' => 'checkbox-inline']) !!}
+			{!! Form::checkbox('recommend', 0, null) !!}
 		</div>
 		
 		<div class="form-group">

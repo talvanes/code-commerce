@@ -15,6 +15,11 @@
 		@endif
 		
 		<div class="form-group">
+			{!! Form::label('category', 'Category:') !!}
+			{!! Form::select('category_id', $categories, $product->category->id, ['class' => 'form-control']) !!}
+		</div>
+		
+		<div class="form-group">
 			{!! Form::label('name', 'Name:') !!}
 			{!! Form::text('name', $product->name, ['class' => 'form-control']) !!}
 		</div>
@@ -25,21 +30,15 @@
 		</div>
 		
 		<div class="form-group">
-			<div class="row">
-				<div class="col-md-4 col-sm-12">
-					{!! Form::label('price', 'Price:') !!}
-					{!! Form::input('number', 'price', $product->price, ['class' => 'form-control']) !!}
-				</div>
-				<div class="col-md-4 col-sm-12">
-					{!! Form::label('featured', 'Featured:') !!}
-					{!! Form::checkbox('featured', $product->featured, ($product->featured ? 'checked' : ''), ['min' => 1, 'max' => 999999]) !!}
-				</div>
-				<div class="col-md-4 col-sm-12">
-					{!! Form::label('recommend', 'Recommended:') !!}
-					{!! Form::checkbox('recommend', $product->recommend, ($product->recommend ? 'checked' : ''), ['min' => 1, 'max' => 999999]) !!}
-				</div>
-			</div>
-			
+			{!! Form::label('price', 'Price:') !!}
+			{!! Form::input('number', 'price', $product->price, ['class' => 'form-control']) !!}
+		</div>
+		
+		<div class="form-group">
+			{!! Form::label('featured', 'Featured:') !!}
+			{!! Form::checkbox('featured', $product->featured, ($product->featured ? 'checked' : '')) !!}
+			{!! Form::label('recommend', 'Recommended:') !!}
+				{!! Form::checkbox('recommend', $product->recommend, ($product->recommend ? 'checked' : '')) !!}
 		</div>
 		
 		<div class="form-group">

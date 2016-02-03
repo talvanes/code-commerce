@@ -10,7 +10,7 @@ class ProductTableSeeder extends Seeder {
 		
 		DB::table('products')->truncate();
 		
-		factory('PortalComercial\Product', 20)->create();
+		factory('PortalComercial\Product', 40)->create();
 		
 	}
 	
