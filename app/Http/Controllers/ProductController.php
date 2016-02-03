@@ -37,13 +37,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create(Category $category, User $user)
-    {
-        $categories = $category->lists('name', 'id');
-        $users = $user->lists('name', 'id');
-		
+	{
+		$categories = $category->lists('name', 'id');
+		$users = $user->lists('name', 'id');
+
 		return view('product.create', compact('categories', 'users'));
-    }
+	}
 
     /**
      * Store a newly created resource in storage.
@@ -71,13 +72,13 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id, Category $category, User $user)
-    {
-        $product = $this->productModel->find($id);
+	{
+		$product = $this->productModel->find($id);
 		$categories = $category->lists('name', 'id');
 		$users = $user->lists('name', 'id');
 
 		return view('product.edit', compact('product', 'categories', 'users'));
-    }
+	}
 
     /**
      * Update the specified resource in storage.
