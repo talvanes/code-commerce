@@ -1,3 +1,8 @@
 * text=auto
+
+*.php text
+
+*.sqlite binary
+
 *.css linguist-vendored
 *.less linguist-vendored
