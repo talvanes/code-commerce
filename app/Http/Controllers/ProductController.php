@@ -9,6 +9,8 @@ use PortalComercial\Http\Controllers\Controller;
 use PortalComercial\Http\Requests\ProductRequest;
 
 use PortalComercial\Product;
+use PortalComercial\Category;
+use PortalComercial\User;
 
 class ProductController extends Controller
 {
@@ -25,7 +27,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->productModel->all();
+        $products = $this->productModel->paginate(10);
 		
 		return view('product.index', compact('products'));
     }
@@ -35,9 +37,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Category $category, User $user)
     {
-        return view('product.create');
+        $categories = $category->lists('name', 'id');
+        $users = $user->lists('name', 'id');
+		
+		return view('product.create', compact('categories', 'users'));
     }
 
     /**
@@ -65,11 +70,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Category $category, User $user)
     {
         $product = $this->productModel->find($id);
-		
-		return view('product.edit', compact('product'));
+		$categories = $category->lists('name', 'id');
+		$users = $user->lists('name', 'id');
+
+		return view('product.edit', compact('product', 'categories', 'users'));
     }
 
     /**

@@ -22,7 +22,7 @@ $factory->define(PortalComercial\User::class, function (Faker\Generator $faker) 
 
 $factory->define(PortalComercial\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->word,
+        'name' => $faker->unique()->word,
         'description' => $faker->sentence()
     ];
 });
@@ -31,7 +31,9 @@ $factory->define(PortalComercial\Product::class, function (Faker\Generator $fake
     return [
         'name' => $faker->word,
 		'description' => $faker->sentence(),
-		'price' => $faker->randomFloat(2, 100, 200000),
+		'price' => (int) $faker->randomFloat(2, 100, 1000000),
+		'category_id' => $faker->numberBetween(1, 15),
+        'user_id' => $faker->numberBetween(1, 10),
 		'featured' => $faker->boolean(),
 		'recommend' => $faker->boolean()
     ];

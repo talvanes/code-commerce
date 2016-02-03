@@ -22,20 +22,33 @@ Route::get('/exemplo2', function(){
     return "Oi";
 });
 
-// Categories //
-Route::get('categories', ['as' => 'categories', 'uses' => "CategoryController@index"]);
-Route::post('categories', ['as' => 'categories.store', 'uses' => "CategoryController@store"]);
-Route::get('categories/create', ['as' => 'categories.create', 'uses' => "CategoryController@create"]);
-Route::get('categories/{id}/destroy', ['as' => 'categories.destroy', 'uses' => "CategoryController@destroy"]);
-Route::get('categories/{id}/edit', ['as' => 'categories.edit', 'uses' => "CategoryController@edit"]);
-Route::put('categories/{id}/update', ['as' => 'categories.update', 'uses' => "CategoryController@update"]);
-// Products //
-Route::get('products', ['as' => 'products', 'uses' => "ProductController@index"]);
-Route::post('products', ['as' => 'products.store', 'uses' => "ProductController@store"]);
-Route::get('products/create', ['as' => 'products.create', 'uses' => "ProductController@create"]);
-Route::get('products/{id}/edit', ['as' => 'products.edit', 'uses' => "ProductController@edit"]);
-Route::put('products/{id}/update', ['as' => 'products.update', 'uses' => "ProductController@update"]);
-Route::get('products/{id}/destroy', ['as' => 'products.destroy', 'uses' => "ProductController@destroy"]);
+Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function(){
+	
+	// Categories //
+	Route::group(['prefix' => 'categories'], function(){
+		Route::get('/', ['as' => 'categories', 'uses' => "CategoryController@index"]);
+		Route::post('/', ['as' => 'categories.store', 'uses' => "CategoryController@store"]);
+		Route::get('create', ['as' => 'categories.create', 'uses' => "CategoryController@create"]);
+		Route::get('{id}/destroy', ['as' => 'categories.destroy', 'uses' => "CategoryController@destroy"]);
+		Route::get('{id}/edit', ['as' => 'categories.edit', 'uses' => "CategoryController@edit"]);
+		Route::put('{id}/update', ['as' => 'categories.update', 'uses' => "CategoryController@update"]);
+	});
+	
+	// Products //
+	Route::group(['prefix' => 'products'], function(){
+		Route::get('/', ['as' => 'products', 'uses' => "ProductController@index"]);
+		Route::post('/', ['as' => 'products.store', 'uses' => "ProductController@store"]);
+		Route::get('create', ['as' => 'products.create', 'uses' => "ProductController@create"]);
+		Route::get('{id}/edit', ['as' => 'products.edit', 'uses' => "ProductController@edit"]);
+		Route::put('{id}/update', ['as' => 'products.update', 'uses' => "ProductController@update"]);
+		Route::get('{id}/destroy', ['as' => 'products.destroy', 'uses' => "ProductController@destroy"]);
+	});
+	
+	// Users //
+	
+});
+
+
 
 // Another custom routes examploe (using closures)
 /*

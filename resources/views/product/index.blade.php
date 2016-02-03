@@ -5,7 +5,7 @@
 		
 		<h1>Products:</h1>
 		
-		<p><a href="{{ route('products.create') }}" class="btn btn-default">New Category</a></p>
+		<p><a href="{{ route('products.create') }}" class="btn btn-default">New Product</a></p>
 		
 		<table class="table">
 			<tr>
@@ -13,8 +13,8 @@
 				<th>Name</th>
 				<th>Description</th>
 				<th>Price</th>
-				<th>Featured</th>
-				<th>Recommend</th>
+				<th>Category</th>
+				<th>Bought By</th>
 				<th>Action</th>
 			</tr>
 			@foreach($products as $product)
@@ -23,8 +23,8 @@
 				<td>{{ $product->name }}</td>
 				<td>{{ $product->description }}</td>
 				<td>{{ number_format($product->price, 2, ',', '.') }}</td>
-				<td>{{ $product->featured ? 'Yes' : 'No' }}</td>
-				<td>{{ $product->recommend ? 'Yes' : 'No' }}</td>
+				<td>{{ $product->category->name }}</td>
+				<td>{{ $product->user->name  }}</td>
 				<td>
 					<a href="{{ route('products.edit', ['id' => $product->id]) }}">Edit</a> |
 					<a href="{{ route('products.destroy', ['id' => $product->id]) }}">Delete</a>
@@ -32,6 +32,8 @@
 			</tr>
 			@endforeach
 		</table>
+		
+		{!! $products->render() !!}
 		
 	</div>
 @endsection
