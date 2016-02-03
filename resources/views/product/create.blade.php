@@ -27,6 +27,11 @@
 		</div>
 		
 		<div class="form-group">
+			{!! Form::label('category', 'Category:') !!}
+			{!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+		</div>
+		
+		<div class="form-group">
 			{!! Form::label('name', 'Name:') !!}
 			{!! Form::text('name', null, ['class' => 'form-control']) !!}
 		</div>
@@ -38,7 +43,11 @@
 		
 		<div class="form-group">
 			{!! Form::label('price', 'Price:') !!}
+<<<<<<< HEAD
 			{!! Form::input('number', 'price', null, ['class' => 'form-control', 'min' => 100, 'max' => 1000000]) !!}
+=======
+			{!! Form::input('number', 'price', null, ['class' => 'form-control']) !!}
+>>>>>>> 12d284a521f8d542aeb4d91f70ebd93758e05806
 		</div>
 		
 		<div class="form-group">

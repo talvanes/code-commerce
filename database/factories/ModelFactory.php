@@ -31,9 +31,14 @@ $factory->define(PortalComercial\Product::class, function (Faker\Generator $fake
     return [
         'name' => $faker->word,
 		'description' => $faker->sentence(),
+<<<<<<< HEAD
 		'price' => (int) $faker->randomFloat(2, 100, 1000000),
 		'category_id' => $faker->numberBetween(1, 15),
         'user_id' => $faker->numberBetween(1, 10),
+=======
+		'price' => $faker->randomFloat(2),
+		'category_id' => $faker->numberBetween(1, 15),
+>>>>>>> 12d284a521f8d542aeb4d91f70ebd93758e05806
 		'featured' => $faker->boolean(),
 		'recommend' => $faker->boolean()
     ];

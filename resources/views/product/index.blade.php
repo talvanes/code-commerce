@@ -14,7 +14,10 @@
 				<th>Description</th>
 				<th>Price</th>
 				<th>Category</th>
+<<<<<<< HEAD
 				<th>Bought By</th>
+=======
+>>>>>>> 12d284a521f8d542aeb4d91f70ebd93758e05806
 				<th>Action</th>
 			</tr>
 			@foreach($products as $product)
@@ -24,7 +27,10 @@
 				<td>{{ $product->description }}</td>
 				<td>{{ number_format($product->price, 2, ',', '.') }}</td>
 				<td>{{ $product->category->name }}</td>
+<<<<<<< HEAD
 				<td>{{ $product->user->name  }}</td>
+=======
+>>>>>>> 12d284a521f8d542aeb4d91f70ebd93758e05806
 				<td>
 					<a href="{{ route('products.edit', ['id' => $product->id]) }}">Edit</a> |
 					<a href="{{ route('products.destroy', ['id' => $product->id]) }}">Delete</a>

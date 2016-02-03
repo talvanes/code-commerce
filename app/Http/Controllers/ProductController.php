@@ -10,7 +10,10 @@ use PortalComercial\Http\Requests\ProductRequest;
 
 use PortalComercial\Product;
 use PortalComercial\Category;
+<<<<<<< HEAD
 use PortalComercial\User;
+=======
+>>>>>>> 12d284a521f8d542aeb4d91f70ebd93758e05806
 
 class ProductController extends Controller
 {
@@ -37,12 +40,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function create(Category $category, User $user)
     {
         $categories = $category->lists('name', 'id');
         $users = $user->lists('name', 'id');
 		
 		return view('product.create', compact('categories', 'users'));
+=======
+    public function create(Category $category)
+    {
+        $categories = $category->lists('name', 'id');
+		
+		return view('product.create', compact('categories'));
+>>>>>>> 12d284a521f8d542aeb4d91f70ebd93758e05806
     }
 
     /**
@@ -70,6 +81,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function edit($id, Category $category, User $user)
     {
         $product = $this->productModel->find($id);
@@ -77,6 +89,14 @@ class ProductController extends Controller
 		$users = $user->lists('name', 'id');
 
 		return view('product.edit', compact('product', 'categories', 'users'));
+=======
+    public function edit($id, Category $category)
+    {
+        $product = $this->productModel->find($id);
+		$categories = $category->lists('name', 'id');
+		
+		return view('product.edit', compact('product', 'categories'));
+>>>>>>> 12d284a521f8d542aeb4d91f70ebd93758e05806
     }
 
     /**
