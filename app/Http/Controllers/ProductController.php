@@ -37,7 +37,6 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create(Category $category, User $user)
 	{
 		$categories = $category->lists('name', 'id');
@@ -79,7 +78,7 @@ class ProductController extends Controller
 
 		return view('product.edit', compact('product', 'categories', 'users'));
 	}
-
+	
     /**
      * Update the specified resource in storage.
      *
