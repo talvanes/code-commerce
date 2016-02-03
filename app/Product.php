@@ -15,4 +15,8 @@ class Product extends Model
 	public function user() {
 		return $this->belongsTo('PortalComercial\User');
 	}
+
+	public function images() {
+		return $this->hasMany('PortalComercial\ProductImage');
+	}
 }

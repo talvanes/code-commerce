@@ -42,6 +42,17 @@ Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function(){
 		Route::get('{id}/edit', ['as' => 'products.edit', 'uses' => "ProductController@edit"]);
 		Route::put('{id}/update', ['as' => 'products.update', 'uses' => "ProductController@update"]);
 		Route::get('{id}/destroy', ['as' => 'products.destroy', 'uses' => "ProductController@destroy"]);
+
+		// site.com.br/admin/products/images/{id}/product
+		Route::group(['prefix' => 'images'], function(){
+
+			Route::get('{id}/product', ['as' => 'products.image', 'uses' => "ProductController@image"]);
+			Route::get('create/{id}/product', ['as' => 'products.image.create', 'uses' => "ProductController@createImage"]);
+			Route::post('store/{id}/product', ['as' => 'products.image.store', 'uses' => "ProductController@storeImage"]);
+			Route::get('destroy/{id}/image', ['as' => 'products.image.destroy', 'uses' => "ProductController@destroyImage"]);
+
+		});
+
 	});
 	
 	// Users //

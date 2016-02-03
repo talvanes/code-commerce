@@ -4,12 +4,15 @@ namespace PortalComercial\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use PortalComercial\Http\Requests;
 use PortalComercial\Http\Controllers\Controller;
 use PortalComercial\Http\Requests\ProductRequest;
 
 use PortalComercial\Product;
 use PortalComercial\Category;
+use PortalComercial\ProductImage;
 use PortalComercial\User;
 
 class ProductController extends Controller
@@ -78,7 +81,7 @@ class ProductController extends Controller
 
 		return view('product.edit', compact('product', 'categories', 'users'));
 	}
-	
+
     /**
      * Update the specified resource in storage.
      *
@@ -111,4 +114,74 @@ class ProductController extends Controller
 		
 		return redirect()->route('products');
     }
+
+
+	/**
+	 *
+	 *
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function image($id) {
+		$product = $this->productModel->find($id);
+
+		return view('product.image', compact('product'));
+	}
+
+	/**
+	 *
+	 *
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function createImage($id) {
+		$product = $this->productModel->find($id);
+
+		return view('product.create_image', compact('product'));
+	}
+
+	/**
+	 *
+	 *
+	 * @param Requests\ProductImageRequest $request
+	 * @param $id
+	 * @param ProductImage $productImage
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function storeImage(Requests\ProductImageRequest $request, ProductImage $productImage, $id) {
+		$file = $request->file('image');
+		$extension = $file->getClientOriginalExtension();
+
+		$image = $productImage::create([
+			'product_id' => $id,
+			'extension'  => $extension
+		]);
+
+		Storage::disk('public_local')->put("{$image->id}.{$extension}", File::get($file));
+
+		return redirect()->route('products.image', ['id' => $id]);
+	}
+
+
+	/**
+	 *
+	 *
+	 * @param ProductImage $productImage
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function destroyImage(ProductImage $productImage, $id) {
+
+		$image = $productImage->find($id);
+
+		if (file_exists(public_path("uploads/{$image->id}.{$image->extension}"))):
+			Storage::disk('public_local')->delete("{$image->id}.{$image->extension}");
+		endif;
+
+		$product = $image->product;
+		$image->delete();
+
+		return redirect()->route('products.image', ['id' => $product->id]);
+	}
+
 }

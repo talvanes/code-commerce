@@ -23,6 +23,15 @@
       <index name="password_resets_token_index" unique="true" columns="token"/>
       <index name="password_resets_email_index" unique="true" columns="email"/>
     </table>
+    <table name="product_images" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="product_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="extension" sqlType="VARCHAR" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="created_at" sqlType="DATETIME" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_product_images_1" columns="product_id" ref-table="products" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="0" deferrability="1"/>
+    </table>
     <table name="products" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR" precision="0" scale="-1" nullable="false" jdbcType="12"/>
@@ -33,6 +42,7 @@
       <column name="created_at" sqlType="DATETIME" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="updated_at" sqlType="DATETIME" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="category_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4" def="JzEn"/>
+      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4" def="JzEn"/>
       <primary-key columns="id"/>
     </table>
     <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
