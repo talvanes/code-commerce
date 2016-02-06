@@ -5,7 +5,10 @@
 		
 		<h1>Products:</h1>
 		
-		<p><a href="{{ route('products.create') }}" class="btn btn-default">New Product</a></p>
+		<p>
+			<a href="{{ route('products.create') }}" class="btn btn-default">New Product</a>
+			<a href="{{ route('products.tags')  }}" class="btn btn-default">Manage Tags</a>
+		</p>
 		
 		<table class="table">
 			<tr>

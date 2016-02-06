@@ -40,6 +40,12 @@
 			{!! Form::label('price', 'Price:') !!}
 			{!! Form::input('number', 'price', null, ['class' => 'form-control', 'min' => 100, 'max' => 1000000]) !!}
 		</div>
+
+		{{-- Tags --}}
+		<div class="form-group">
+			{!! Form::label('tags', 'Tags:') !!}
+			{!! Form::textarea('tags', null, ['readonly', 'rows' => 2, 'class' => 'form-control']) !!}
+		</div>
 		
 		<div class="form-group">
 			{!! Form::label('featured', 'Featured:', ['class' => 'checkbox-inline']) !!}

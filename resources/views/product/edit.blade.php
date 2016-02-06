@@ -40,6 +40,15 @@
 			{!! Form::label('price', 'Price:') !!}
 			{!! Form::input('number', 'price', $product->price, ['class' => 'form-control', 'min' => 100, 'max' => 1000000]) !!}
 		</div>
+
+		{{-- Tags --}}
+		<div class="form-group">
+			<p>
+				{!! Form::label('tags', 'Tags:') !!}
+				<a href="{{ route('product.tags.index', ['id' => $product->id]) }}" class="pull-right">Manage Tags</a>
+			</p>
+			{!! Form::textarea('tags', $product->tagList, ['readonly', 'rows' => 2, 'class' => 'form-control']) !!}
+		</div>
 		
 		<div class="form-group">
 			{!! Form::label('featured', 'Featured:') !!}

@@ -22,7 +22,7 @@ Route::get('/exemplo2', function(){
     return "Oi";
 });
 
-Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function(){
+Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+', 'tag' => '[0-9]+']], function(){
 	
 	// Categories //
 	Route::group(['prefix' => 'categories'], function(){
@@ -43,6 +43,11 @@ Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function(){
 		Route::put('{id}/update', ['as' => 'products.update', 'uses' => "ProductController@update"]);
 		Route::get('{id}/destroy', ['as' => 'products.destroy', 'uses' => "ProductController@destroy"]);
 
+		Route::get('{id}/tags', ['as' => 'product.tags.index', 'uses' => "ProductController@productTags"]);
+		Route::get('{id}/tags/add', ['as' => 'product.tags.add', 'uses' => "ProductController@addProductTags"]);
+		Route::post('{id}/tags/store', ['as' => 'product.tags.store', 'uses' => "ProductController@storeProductTags"]);
+		Route::get('{id}/tags/{tag}/delete', ['as' => 'product.tags.delete', 'uses' => "ProductController@deleteProductTags"]);
+
 		// site.com.br/admin/products/images/{id}/product
 		Route::group(['prefix' => 'images'], function(){
 
@@ -50,6 +55,16 @@ Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function(){
 			Route::get('create/{id}/product', ['as' => 'products.image.create', 'uses' => "ProductController@createImage"]);
 			Route::post('store/{id}/product', ['as' => 'products.image.store', 'uses' => "ProductController@storeImage"]);
 			Route::get('destroy/{id}/image', ['as' => 'products.image.destroy', 'uses' => "ProductController@destroyImage"]);
+
+		});
+
+		// site.com.br/admin/products/tags
+		Route::group(['prefix' => 'tags'], function(){
+
+			Route::get('/', ['as' => 'products.tags', 'uses' => "ProductController@tags"]);
+			Route::get('create', ['as' => 'products.tags.create', 'uses' => "ProductController@tagCreate"]);
+			Route::post('store', ['as' => 'products.tags.store', 'uses' => "ProductController@tagStore"]);
+			Route::get('{id}/delete', ['as' => 'products.tags.delete', 'uses' => "ProductController@tagDelete"]);
 
 		});
 

@@ -4,7 +4,7 @@ namespace PortalComercial\Http\Requests;
 
 use PortalComercial\Http\Requests\Request;
 
-class ProductRequest extends Request
+class ProductTagRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,7 @@ class ProductRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|min:5',
-			'description' => 'required',
-			'price' => 'required|numeric|between:100,1000000',
-			'featured' => 'boolean',
-			'recommend' => 'boolean',
-            'tags' => 'string'
+            'tag' => 'unique:tags,name'
         ];
     }
 }

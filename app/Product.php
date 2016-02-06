@@ -19,4 +19,28 @@ class Product extends Model
 	public function images() {
 		return $this->hasMany('PortalComercial\ProductImage');
 	}
+
+	public function tags() {
+		return $this->belongsToMany('PortalComercial\Tag');
+	}
+
+	/**
+	 * Access this method as either name_description or nameDescription attribute
+	 *
+	 * @return string
+	 */
+	public function getNameDescriptionAttribute() {
+		return "{$this->name} - {$this->description}";
+	}
+
+	/**
+	 * Access this method as either tag_list or tagList attribute
+	 *
+	 * @return string
+	 */
+	public function getTagListAttribute() {
+		$tags = $this->tags->lists('name')->all();
+
+		return implode(', ', $tags);
+	}
 }
