@@ -99,6 +99,7 @@ class ProductController extends Controller
         $product->featured = $request->has('featured');
         $product->recommend = $request->has('recommend');
 
+
         $product->update($input);
 
         return redirect()->route('products');

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "StoreController@index");
 
 // Custom route (Controller)
 Route::get('exemplo', "Exemplo@exemplo");
