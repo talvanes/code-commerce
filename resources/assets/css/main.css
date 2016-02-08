@@ -1285,6 +1285,15 @@ h2.title {
   margin-right: 5px;
 }
 
+.product-tags {
+  overflow: hidden;
+  padding-bottom: 60px;
+  padding-left: 60px;
+  padding-top: 60px;
+  position: relative;
+}
+.product-tags a { text-decoration: none; }
+
 .share {
   margin-top: 15px;
 }

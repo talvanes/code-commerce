@@ -63,4 +63,15 @@ class Product extends Model
 	public function scopeRecommended($query) {
 		return $query->where('recommend','=',1);
 	}
+
+	/**
+	 *
+	 *
+	 * @param $query
+	 * @param $type
+	 * @return mixed
+	 */
+	public function scopeOfCategory($query, $type) {
+		return $query->where('category_id', '=', $type);
+	}
 }

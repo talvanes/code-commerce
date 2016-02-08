@@ -9,6 +9,7 @@ class Tag extends Model
     protected $fillable = ['name'];
 
     public function products() {
-        return $this->belongsToMany('PortalComercial\Products');
+        return $this->belongsToMany('PortalComercial\Product');
     }
+
 }

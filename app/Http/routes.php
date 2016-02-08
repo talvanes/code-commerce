@@ -12,6 +12,9 @@
 */
 
 Route::get('/', "StoreController@index");
+Route::get('category/{id}', ['as' => 'store.category', 'uses' => "StoreController@category"]);
+Route::get('product/{id}', ['as' => 'store.product', 'uses' => "StoreController@product"]);
+Route::get('tag/{id}', ['as' => 'store.tag', 'uses' => "StoreController@tag"]);
 
 // Custom route (Controller)
 Route::get('exemplo', "Exemplo@exemplo");

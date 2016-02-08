@@ -59,10 +59,10 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $input = $request->all();
+        $input['featured'] = (int) $request->input('featured');
+        $input['recommend'] = (int) $request->input('recommend');
 
         $product = $this->productModel->fill($input);
-        $product->featured = $request->has('featured');
-        $product->recommend = $request->has('recommend');
 
         $product->save();
 
@@ -94,11 +94,10 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $input = $request->all();
+        $input['featured'] = (int) $request->has('featured');
+        $input['recommend'] = (int) $request->has('recommend');
 
         $product = $this->productModel->find($id);
-        $product->featured = $request->has('featured');
-        $product->recommend = $request->has('recommend');
-
 
         $product->update($input);
 
