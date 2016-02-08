@@ -16,6 +16,10 @@ Route::get('category/{id}', ['as' => 'store.category', 'uses' => "StoreControlle
 Route::get('product/{id}', ['as' => 'store.product', 'uses' => "StoreController@product"]);
 Route::get('tag/{id}', ['as' => 'store.tag', 'uses' => "StoreController@tag"]);
 
+Route::get('cart', ['as' => 'cart', 'uses' => "CartController@index"]);
+Route::get('cart/add/{id}', ['as' => 'cart.add', 'uses' => "CartController@add"]);
+Route::get('cart/remove/{id}', ['as' => 'cart.remove', 'uses' => "CartController@remove"]);
+
 // Custom route (Controller)
 Route::get('exemplo', "Exemplo@exemplo");
 // Another custom route (Closure)

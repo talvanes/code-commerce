@@ -29,7 +29,7 @@
         </table>
 
         <p>
-            <a href="{{ route('products.edit', ['id' => $product->id])  }}" class="btn btn-default">Voltar</a>
+            <a href="{{ route('products') }}" class="btn btn-default">Voltar</a>
         </p>
 
         {{--{!! $tags->render() !!}--}}

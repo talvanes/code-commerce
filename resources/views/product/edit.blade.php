@@ -43,10 +43,7 @@
 
 		{{-- Tags --}}
 		<div class="form-group">
-			<p>
-				{!! Form::label('tags', 'Tags:') !!}
-				<a href="{{ route('product.tags.index', ['id' => $product->id]) }}" class="pull-right">Manage Tags</a>
-			</p>
+			{!! Form::label('tags', 'Tags:') !!}
 			{!! Form::textarea('tags', $product->tagList, ['readonly', 'rows' => 2, 'class' => 'form-control']) !!}
 		</div>
 		
