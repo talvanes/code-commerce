@@ -37,9 +37,14 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-
+    # ?????
     public function products() {
         return $this->hasMany('PortalComercial\Product');
+    }
+    # ?????
+
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 
 }
