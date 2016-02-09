@@ -4,6 +4,7 @@ namespace PortalComercial\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use PortalComercial\Http\Requests;
 use PortalComercial\Http\Controllers\Controller;
@@ -12,6 +13,11 @@ use PortalComercial\OrderItem;
 
 class CheckoutController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function place(Order $orderModel, OrderItem $orderItem)
     {
 
@@ -24,7 +30,7 @@ class CheckoutController extends Controller
         if ($cart->getTotal() > 0):
             # create order
             $order = $orderModel->create([
-                'user_id' => 1,
+                'user_id' => Auth::user()->id,
                 'total' => $cart->getTotal()
             ]);
 

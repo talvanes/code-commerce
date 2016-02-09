@@ -29,7 +29,8 @@ Route::get('/exemplo2', function(){
     return "Oi";
 });
 
-Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+', 'tag' => '[0-9]+']], function(){
+/* ADMIN group */
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'where' => ['id' => '[0-9]+', 'tag' => '[0-9]+']], function(){
 	
 	// Categories //
 	Route::group(['prefix' => 'categories'], function(){
@@ -82,8 +83,16 @@ Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+', 'tag' => '[0-9]
 });
 
 
+// Route controllers
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+	'test' => 'TestController'
+]);
 
-// Another custom routes examploe (using closures)
+
+
+// Another custom routes example (using closures)
 /*
 Route::get('/exemplo2', function () {
     return "Oi!";
