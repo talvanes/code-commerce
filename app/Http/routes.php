@@ -20,7 +20,18 @@ Route::get('cart', ['as' => 'cart', 'uses' => "CartController@index"]);
 Route::get('cart/add/{id}', ['as' => 'cart.add', 'uses' => "CartController@add"]);
 Route::get('cart/remove/{id}', ['as' => 'cart.remove', 'uses' => "CartController@remove"]);
 
-Route::get('checkout/placeOrder', ['as' => 'checkout.place', 'uses' => "CheckoutController@place"]);
+/* Routes which demand user authentication */
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('checkout/placeOrder', ['as' => 'checkout.place', 'uses' => "CheckoutController@place"]);
+
+	Route::group(['prefix' => 'account'], function(){
+		Route::get('orders', ['as' => 'account.orders', 'uses' => "AccountController@orders"]);
+		Route::get('order/{id}/status', ['as' => 'account.order.status', 'uses' => "AccountController@status"]);
+		Route::put('order/{id}/status/update', ['as' => 'account.order.status.store', 'uses' => "AccountController@storeStatus"]);
+	});
+
+});
+
 
 // Custom route (Controller)
 Route::get('exemplo', "Exemplo@exemplo");

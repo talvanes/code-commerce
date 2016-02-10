@@ -17,12 +17,11 @@
                     </tr>
                     <tfoot>
                     <tr>
-                        <td colspan="4"></td>
-                        <td>
-                            <span class="">Total: R$ {{ number_format($cart->getTotal(), 2, ',', '.') }}</span>
+                        <td colspan="5">
+                            <span style="margin-right: 100px" class="pull-right">Total: R$ {{ number_format($cart->getTotal(), 2, ',', '.') }}</span>
                         </td>
                         <td>
-                            <a href="#" class="btn btn-success">Fechar a conta</a>
+                            <a href="{{ route('checkout.place') }}" class="btn btn-success pull-right">Fechar a conta</a>
                         </td>
                     </tr>
                     </tfoot>
