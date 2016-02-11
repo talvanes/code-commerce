@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -149,7 +149,8 @@ return [
         /*
          * Third-party Service Providers
          */
-        Bestmomo\Scafold\ScafoldServiceProvider::class
+        Bestmomo\Scafold\ScafoldServiceProvider::class,
+        LaravelPagseguro\LaravelPagseguroServiceProvider::class
 
     ],
 

@@ -11,6 +11,9 @@
 |
 */
 
+// Test route (PagSeguro)
+Route::get('teste', ['as' => 'teste', 'uses' => "CheckoutController@teste"]);
+
 Route::get('/', "StoreController@index");
 Route::get('category/{id}', ['as' => 'store.category', 'uses' => "StoreController@category"]);
 Route::get('product/{id}', ['as' => 'store.product', 'uses' => "StoreController@product"]);
@@ -30,14 +33,6 @@ Route::group(['middleware' => 'auth'], function(){
 		Route::put('order/{id}/status/update', ['as' => 'account.order.status.store', 'uses' => "AccountController@storeStatus"]);
 	});
 
-});
-
-
-// Custom route (Controller)
-Route::get('exemplo', "Exemplo@exemplo");
-// Another custom route (Closure)
-Route::get('/exemplo2', function(){
-    return "Oi";
 });
 
 /* ADMIN group */
@@ -93,15 +88,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'where' => ['id' => '
 	
 });
 
-
 // Route controllers
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
-	'test' => 'TestController'
+	//'test' => 'TestController'
 ]);
 
 
+// Custom route (Controller)
+Route::get('exemplo', "Exemplo@exemplo");
+// Another custom route (Closure)
+Route::get('/exemplo2', function(){
+	return "Oi";
+});
 
 // Another custom routes example (using closures)
 /*
